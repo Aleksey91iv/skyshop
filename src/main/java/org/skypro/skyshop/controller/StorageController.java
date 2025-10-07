@@ -13,18 +13,26 @@ import java.util.Collection;
 @RestController
 public class StorageController {
 
+    private final StorageService storageService;
+    private final SearchService searchService;
+
+    public StorageController(StorageService storageService, SearchService searchService) {
+        this.storageService = storageService;
+        this.searchService = searchService;
+    }
+
     @GetMapping("/products")
     public Collection<Product> getAllProducts() {
-        return new StorageService().getAllProducts();
+        return storageService.getAllProducts();
     }
 
     @GetMapping("/articles")
     public Collection<Article> getAllArticles() {
-        return new StorageService().getAllArticles();
+        return storageService.getAllArticles();
     }
 
     @GetMapping("/search")
     public Collection<SearchResult> searchResults(String pattern) {
-        return new SearchService().search(pattern);
+        return searchService.search(pattern);
     }
 }

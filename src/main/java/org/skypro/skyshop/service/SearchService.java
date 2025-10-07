@@ -12,8 +12,8 @@ public class SearchService {
 
     private final StorageService storageService;
 
-    public SearchService() {
-        storageService = new StorageService();
+    public SearchService(StorageService storageService) {
+        this.storageService = storageService;
     }
 
     public Collection<SearchResult> search(String pattern) {
