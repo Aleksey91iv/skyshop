@@ -28,6 +28,8 @@ public class StorageService {
         Product discountedProduct = new DiscountedProduct(UUID.randomUUID(), "Сандалеты Размер 47", 200, 50);
         Product fixPriceProduct = new FixPriceProduct(UUID.randomUUID(), "Шлёпки");
         Product simpleProduct2 = new SimpleProduct(UUID.randomUUID(), "Вилла", 100000);
+        Product simpleProduct3 = new SimpleProduct(UUID.fromString("d648c957-cad1-4b84-b953-62849f7a3806"), "Сандалеты Размер 45", 100);
+        Product simpleProduct4 = new SimpleProduct(UUID.fromString("d648c957-cad1-4b84-b953-62849f7a3807"), "Сандалеты Размер 46", 100);
 
         Article sandalety = new Article(UUID.randomUUID(), "Сандалеты.", "Удобный товар.");
         Article manShlepkiArticle = new Article(UUID.randomUUID(), "Шлёпки", "Отличный товар товар.");
@@ -66,5 +68,9 @@ public class StorageService {
                     return (Searchable)article;});
 
         return Stream.concat(productStream, articleStream).collect(Collectors.toSet());
+    }
+
+    public Optional<Product> getProductById(UUID id) {
+        return Optional.ofNullable(products.get(id));
     }
 }
