@@ -47,12 +47,8 @@ public class StorageController {
     @GetMapping("/basket/{id}")
     public String addProduct(@PathVariable("id") UUID id)
     {
-        try {
-            basketService.addProductItem(id);
-            return "Продукт успешно добавлен";
-        } catch (IllegalArgumentException ex) {
-            return ex.getMessage();
-        }
+        basketService.addProductItem(id);
+        return "Продукт успешно добавлен";
     }
 
     @GetMapping("/basket")
